@@ -12,7 +12,7 @@ Ver1（1週間完了目標）
 •例示テキストの常時表示
 •Enterで計算トリガー
 
-Day 3：和暦⇔西暦 解析
+[DONE] Day 3：和暦⇔西暦 解析
 •eras.ts（S/H/R境界定義）
 •parseWareki.ts（S/H/R、元年、/ - . スペース、ゼロ埋め）
 •parseGregorian.ts（yyyy/m/d 等と実在日付チェック）
