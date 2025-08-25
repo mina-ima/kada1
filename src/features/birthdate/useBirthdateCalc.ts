@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { parseWareki } from '@/lib/date/parseWareki';
 import { parseGregorian } from '@/lib/date/parseGregorian';
 import { isFutureDate } from '@/lib/date/validate';
