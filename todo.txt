@@ -27,7 +27,7 @@ Ver1（1週間完了目標）
 •ResultCard／ErrorText実装
 •スタイル（青系テーマ、余白、影、角丸）
 
-Day 6：テスト
+[UNIT TESTS DONE, E2E PENDING] Day 6：テスト
 •単体テスト：境界・元年・ゼロ埋め・不正・未来日
 •手動E2E：Chrome/Edge/Firefox/Safari
 
