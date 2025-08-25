@@ -1,0 +1,45 @@
+ToDoリスト（実行用チェックリスト）
+
+Ver1（1週間完了目標）
+
+[DONE] Day 1：環境構築
+•Vite + React + TS + Tailwind 初期化
+•ESLint/Prettier 設定
+•画面骨組み（Header/Footer/Appレイアウト）
+
+[DONE] Day 2：入力UI
+•DateInputField（テキスト＋<input type="date">同期）
+•例示テキストの常時表示
+•Enterで計算トリガー
+
+Day 3：和暦⇔西暦 解析
+•eras.ts（S/H/R境界定義）
+•parseWareki.ts（S/H/R、元年、/ - . スペース、ゼロ埋め）
+•parseGregorian.ts（yyyy/m/d 等と実在日付チェック）
+
+Day 4：計算＆検証
+•age.ts（基準日デフォルト＝日本時間の今日）
+•validate.ts（未来日・対象外・不正日付）
+•formatWareki.ts（漢字フル＋元年表記）
+
+Day 5：画面結合
+•BirthdateForm＋useBirthdateCalcで結合
+•ResultCard／ErrorText実装
+•スタイル（青系テーマ、余白、影、角丸）
+
+Day 6：テスト
+•単体テスト：境界・元年・ゼロ埋め・不正・未来日
+•手動E2E：Chrome/Edge/Firefox/Safari
+
+Day 7：公開
+•Vercel設定・デプロイ
+•README作成（使い方・仕様・既知制限）
+•タグ v1.0.0
+
+⸻
+
+Ver2 バックログ（次サイクル）
+•勤続年数（年・月・日、入社日→基準日、未来日エラー）
+•定年まで（X歳、3プリセット、定年日・残期間）
+•退職所得（控除→1/2課税、表表示）
+•UI拡張（結果タブ化）、PWA（任意）
