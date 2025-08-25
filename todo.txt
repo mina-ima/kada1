@@ -31,7 +31,7 @@ Ver1（1週間完了目標）
 •単体テスト：境界・元年・ゼロ埋め・不正・未来日
 •手動E2E：Chrome/Edge/Firefox/Safari
 
-Day 7：公開
+[IN PROGRESS] Day 7：公開
 •Vercel設定・デプロイ
 •README作成（使い方・仕様・既知制限）
 •タグ v1.0.0

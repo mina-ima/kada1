@@ -1,69 +1,61 @@
-# React + TypeScript + Vite
+# 年齢・和暦変換ツール
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 概要
 
-Currently, two official plugins are available:
+このアプリケーションは、生年月日と基準日（任意）を入力することで、その時点での年齢、西暦、和暦を計算し表示するツールです。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 使い方
 
-## Expanding the ESLint configuration
+1.  **生年月日を入力:** 最初の入力フィールドに生年月日を入力します。和暦（例: `R1/5/1`, `S45.12.3`）または西暦（例: `1990/01/01`）の形式で入力できます。
+2.  **基準日を入力 (任意):** 2番目の入力フィールドに基準日を入力します。未入力の場合、自動的に今日の日本時間が基準日として使用されます。
+3.  **計算:** 「計算する」ボタンをクリックするか、入力フィールドで Enter キーを押すと、結果が表示されます。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 仕様
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+詳細な要件定義については、[requirements.md](requirements.md) を参照してください。
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### 入力形式
+*   **西暦:** `yyyy/m/d` (`-`, `.`, スペースも許容)
+*   **和暦:** 略号 (`S`, `H`, `R`) + 数字のみ。`元年` は `1年` と同義。`/`, `-`, `.`, スペースを区切り文字として許容。ゼロ埋めも可能（例: `R01/05/01`）。
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 出力形式
+*   **西暦:** `YYYY年M月D日` (例: `1990年1月1日`)
+*   **和暦:** `元号元年M月D日` または `元号N年M月D日` (例: `令和元年5月1日`, `平成31年4月30日`)
+*   **年齢:** `N歳`
+
+### 元号境界
+*   **昭和:** 1926-12-25 ～ 1989-01-07
+*   **平成:** 1989-01-08 ～ 2019-04-30
+*   **令和:** 2019-05-01 ～（現在）
+
+## 既知の制限
+
+*   **元号の範囲:** 昭和、平成、令和のみに対応しています。大正、明治などの元号はサポートしていません。
+*   **未来日の入力:** 基準日を含め、未来の日付は入力できません。
+*   **UIの調整:** 現在のUIは基本的なものであり、さらなる改善の余地があります。
+
+## 開発
+
+### 環境構築
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 開発サーバーの起動
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### ビルド
+
+```bash
+npm run build
+```
+
+### テスト
+
+```bash
+npm test
 ```
