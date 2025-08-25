@@ -17,7 +17,7 @@ Ver1（1週間完了目標）
 •parseWareki.ts（S/H/R、元年、/ - . スペース、ゼロ埋め）
 •parseGregorian.ts（yyyy/m/d 等と実在日付チェック）
 
-Day 4：計算＆検証
+[DONE] Day 4：計算＆検証
 •age.ts（基準日デフォルト＝日本時間の今日）
 •validate.ts（未来日・対象外・不正日付）
 •formatWareki.ts（漢字フル＋元年表記）
