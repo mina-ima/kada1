@@ -27,14 +27,17 @@ const DateInputField: React.FC<DateInputFieldProps> = ({ label, value, onChange,
   };
 
   return (
-    <div>
-      <label htmlFor={label}>{label}</label>
+    <div className="mb-4">
+      <label htmlFor={label} className="block text-gray-700 text-sm font-bold mb-2">
+        {label}
+      </label>
       <input
         type="text"
         id={label}
         value={value}
         onChange={handleTextChange}
         placeholder={placeholder}
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       />
       <input
         type="date"

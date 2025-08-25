@@ -3,13 +3,16 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>年齢・和暦変換ツール</h1>
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-8">
+      <header className="w-full bg-blue-800 text-white p-4 shadow-md text-center">
+        <h1 className="text-3xl font-bold">年齢・和暦変換ツール</h1>
       </header>
-      <main>
+      <main className="flex-grow container mx-auto p-4 mt-8 bg-white rounded-lg shadow-lg">
         <BirthdateForm />
       </main>
+      <footer className="w-full bg-blue-800 text-white p-4 mt-8 text-center text-sm">
+        &copy; 2025 年齢・和暦変換ツール
+      </footer>
     </div>
   );
 }
