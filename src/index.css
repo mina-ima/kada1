@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.input-text-size {
+  font-size: 2.25rem; /* Equivalent to Tailwind's text-4xl */
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

@@ -79,24 +79,24 @@ const BirthdateForm: React.FC = () => {
 
       <div className="flex justify-center">
         <div className="w-2/3 max-w-xs">
-          <label htmlFor="age" className="block text-xl font-medium text-gray-700">定年年齢 (歳)</label>
+          <label htmlFor="age" className="block text-xl font-medium text-gray-700 text-left">定年年齢 (歳)</label>
           <input
             type="number"
             id="age"
             value={age}
             onChange={(e) => setAge(parseInt(e.target.value, 10) || 0)}
-            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-700 text-5xl"
+            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-700 input-text-size"
           />
         </div>
       </div>
       <div className="flex justify-center">
         <div className="w-2/3 max-w-xs">
-          <label htmlFor="rule" className="block text-xl font-medium text-gray-700">定年ルール</label>
+          <label htmlFor="rule" className="block text-xl font-medium text-gray-700 text-left">定年ルール</label>
           <select
             id="rule"
             value={rule}
             onChange={(e) => setRule(e.target.value as RetirementRule)}
-            className="mt-1 block w-full pl-3 pr-10 py-2 border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md text-gray-700 text-5xl"
+            className="mt-1 block w-full pl-3 pr-10 py-2 border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md text-gray-700 input-text-size"
           >
             <option value="BIRTHDAY">誕生日</option>
             <option value="BIRTH_MONTH_END">誕生日の月末</option>
@@ -109,7 +109,7 @@ const BirthdateForm: React.FC = () => {
       {rule === 'FY_SPECIFIC_MONTH_END' && (
         <div className="flex justify-center">
           <div className="w-2/3 max-w-xs">
-            <label htmlFor="specificMonth" className="block text-xl font-medium text-gray-700">指定月</label>
+            <label htmlFor="specificMonth" className="block text-xl font-medium text-gray-700 text-left">指定月</label>
             <select
               id="specificMonth"
               value={specificMonth}
@@ -141,8 +141,8 @@ const BirthdateForm: React.FC = () => {
 
       {seniorityError && <ErrorText message={seniorityError} />}
       {!seniorityError && seniority && (
-        <div className="mt-4 p-4 bg-green-50 rounded-lg shadow">
-          <h3 className="text-lg font-semibold text-green-800">勤続年数 計算結果</h3>
+        <div className="mt-4 p-4 bg-blue-50 rounded-lg shadow">
+          <h3 className="text-lg font-semibold text-blue-800">勤続年数 計算結果</h3>
           <div className="grid grid-cols-2 gap-2 mt-2">
             <div className="font-medium">勤続期間:</div>
             <div>{`${seniority.years}年 ${seniority.months}か月 ${seniority.days}日`}</div>
@@ -154,8 +154,8 @@ const BirthdateForm: React.FC = () => {
 
       {retirementError && <ErrorText message={retirementError} />}
       {!retirementError && retirementDate && (
-        <div className="mt-4 p-4 bg-purple-50 rounded-lg shadow">
-          <h3 className="text-lg font-semibold text-purple-800">定年まで 計算結果</h3>
+        <div className="mt-4 p-4 bg-blue-50 rounded-lg shadow">
+          <h3 className="text-lg font-semibold text-blue-800">定年まで 計算結果</h3>
           <div className="grid grid-cols-2 gap-2 mt-2">
             <div className="font-medium">定年退職日:</div>
             <div>{`${retirementDate.getFullYear()}年${retirementDate.getMonth() + 1}月${retirementDate.getDate()}日`} ({formatWareki(retirementDate)})</div>
@@ -173,20 +173,20 @@ const BirthdateForm: React.FC = () => {
 
       <div className="flex justify-center">
         <div className="w-2/3 max-w-xs">
-          <label htmlFor="retirementIncomeAmount" className="block text-xl font-medium text-gray-700">退職金額</label>
+          <label htmlFor="retirementIncomeAmount" className="block text-xl font-medium text-gray-700 text-left">退職金額</label>
           <input
             type="text"
             id="retirementIncomeAmount"
             value={retirementIncomeAmount}
             onChange={(e) => setRetirementIncomeAmount(parseInt(e.target.value, 10) || 0)}
-            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-700 text-5xl"
+            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-700 input-text-size"
           />
         </div>
       </div>
 
       {deductionAmount !== null && taxableRetirementIncome !== null && (
-        <div className="mt-4 p-4 bg-yellow-50 rounded-lg shadow">
-          <h3 className="text-lg font-semibold text-yellow-800">退職所得 計算結果</h3>
+        <div className="mt-4 p-4 bg-blue-50 rounded-lg shadow">
+          <h3 className="text-lg font-semibold text-blue-800">退職所得 計算結果</h3>
           <div className="grid grid-cols-2 gap-2 mt-2">
             <div className="font-medium">退職所得控除額:</div>
             <div>{deductionAmount.toLocaleString()}円</div>
