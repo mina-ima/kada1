@@ -4,7 +4,7 @@ import { parseGregorian } from '../../lib/date/parseGregorian';
 import { isFutureDate } from '../../lib/date/validate';
 import { diffYMD, toFullYears } from '../../lib/date/seniority';
 import type { Seniority } from '../../types';
-import { useAppContext } from '../../context/AppContext';
+
 
 interface SeniorityCalcResult {
   seniority: Seniority | null;
@@ -21,8 +21,10 @@ const parseDateString = (dateString: string): Date | null => {
   return parsedDate;
 };
 
-export const useSeniorityCalc = (): SeniorityCalcResult => {
-  const { hireDateString, referenceDateString } = useAppContext();
+export const useSeniorityCalc = (
+  hireDateString: string,
+  referenceDateString: string
+): SeniorityCalcResult => {
 
   const result = useMemo<SeniorityCalcResult>(() => {
     if (!hireDateString) {

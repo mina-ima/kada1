@@ -3,6 +3,7 @@ import React, { useState, Children, isValidElement, useRef, useEffect } from 're
 type TabProps = {
   label: string;
   children?: React.ReactNode;
+  backgroundColor?: string;
 };
 
 export const Tab: React.FC<TabProps> = ({ children }) => <>{children}</>;
@@ -48,7 +49,7 @@ export const Tabs: React.FC<TabsProps> = ({ children }) => {
           return (
             <button
               key={index}
-              ref={(el) => (tabRefs.current[index] = el)}
+              ref={(el) => { tabRefs.current[index] = el; }}
               role="tab"
               id={`tab-${index}`}
               aria-controls={`tabpanel-${index}`}
@@ -70,6 +71,7 @@ export const Tabs: React.FC<TabsProps> = ({ children }) => {
       <div>
         {tabs.map((tab, index) => {
           const isActive = index === activeIndex;
+          const { backgroundColor } = tab.props;
           return (
             <div
               key={index}
@@ -77,7 +79,7 @@ export const Tabs: React.FC<TabsProps> = ({ children }) => {
               role="tabpanel"
               aria-labelledby={`tab-${index}`}
               hidden={!isActive}
-              className="p-4"
+              className={`p-4 ${backgroundColor || ''}`}
             >
               {isActive && tab.props.children}
             </div>

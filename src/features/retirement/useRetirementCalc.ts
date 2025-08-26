@@ -5,7 +5,7 @@ import { isFutureDate } from '../../lib/date/validate';
 import { resolveRetirementDate } from '../../lib/date/retirement';
 import { diffYMD } from '../../lib/date/seniority';
 import type { RetirementRule, Seniority } from '../../types';
-import { useAppContext } from '../../context/AppContext';
+
 
 interface RetirementCalcResult {
   retirementDate: Date | null;
@@ -31,9 +31,10 @@ interface RetirementOptions {
 export const useRetirementCalc = (
   age: number,
   rule: RetirementRule,
-  options: RetirementOptions
+  options: RetirementOptions,
+  birthDateString: string,
+  referenceDateString: string
 ): RetirementCalcResult => {
-  const { birthDateString, referenceDateString } = useAppContext();
 
   const result = useMemo<RetirementCalcResult>(() => {
     if (!birthDateString || !age) {

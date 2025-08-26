@@ -4,7 +4,7 @@ import { parseGregorian } from '@/lib/date/parseGregorian';
 import { isFutureDate } from '@/lib/date/validate';
 import { calculateAge } from '@/lib/date/age';
 import { formatWareki } from '@/lib/date/formatWareki';
-import { useAppContext } from '@/context/AppContext';
+
 
 interface BirthdateCalcResult {
   gregorianBirthdate: Date | null;
@@ -22,8 +22,10 @@ const parseDateString = (dateString: string): Date | null => {
   return parsedDate;
 };
 
-export const useBirthdateCalc = (): BirthdateCalcResult => {
-  const { birthDateString, referenceDateString } = useAppContext();
+export const useBirthdateCalc = (
+  birthDateString: string,
+  referenceDateString: string
+): BirthdateCalcResult => {
 
   const result = useMemo<BirthdateCalcResult>(() => {
     if (!birthDateString) {
