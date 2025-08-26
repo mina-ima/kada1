@@ -1,6 +1,6 @@
 ToDoリスト（実行用チェックリスト）
 
-Ver1（1週間完了目標）
+--- Ver1 (完了) ---
 
 [DONE] Day 1：環境構築
 •Vite + React + TS + Tailwind 初期化
@@ -31,15 +31,50 @@ Ver1（1週間完了目標）
 •単体テスト：境界・元年・ゼロ埋め・不正・未来日
 •手動E2E：Chrome/Edge/Firefox/Safari
 
-[IN PROGRESS] Day 7：公開
+[DONE] Day 7：公開
 •Vercel設定・デプロイ
 •README作成（使い方・仕様・既知制限）
 •タグ v1.0.0
 
 ⸻
 
-Ver2 バックログ（次サイクル）
-•勤続年数（年・月・日、入社日→基準日、未来日エラー）
-•定年まで（X歳、3プリセット、定年日・残期間）
-•退職所得（控除→1/2課税、表表示）
-•UI拡張（結果タブ化）、PWA（任意）
+--- Ver2 (進行中) ---
+
+[DONE] 0. 全体準備
+- [DONE] READMEにVer2の機能範囲を追記
+- [DONE] 型定義を追加 (RetirementRule, Seniority)
+
+[DONE] 1. Tabs実装（ナビゲーション）
+- [DONE] アクセシビリティ対応のTabsコンポーネントを新規作成
+- [DONE] アプリのメイン画面にタブUIを統合
+
+[DONE] 2. 機能①：勤続年数
+- [DONE] 計算ロジック (seniority.ts) を実装
+- [DONE] 単体テストを作成し、バグを修正
+- [DONE] 計算フォーム (SeniorityForm.tsx) を実装
+- [DONE] カスタムフック (useSeniorityCalc.ts) でUIとロジックを接続
+
+[DONE] 3. 機能②：定年まで
+- [DONE] 計算ロジック (retirement.ts) を実装
+- [DONE] 単体テストを作成し、タイムゾーン問題を修正
+- [DONE] 計算フォーム (RetirementForm.tsx) を実装
+- [DONE] カスタムフック (useRetirementCalc.ts) でUIとロジックを接続
+
+[DONE] 4. 機能③：退職所得（簡易）
+- [DONE] 計算ロジック (retirementIncome.ts) を実装
+- [DONE] 単体テストの作成と実行
+- [DONE] 状態連携 (Context API) の実装
+- [DONE] UIフォーム (RetirementIncomeForm.tsx) の実装
+- [DONE] UIとロジックの接続
+
+[DONE] 5. 結合と仕上げ
+- [DONE] UI/UXの微調整
+  - [DONE] 「到達済み」表示のトーンを中立色に変更
+  - [DONE] タブのレスポンシブ対応（横スクロール）
+  - [DONE] 全体のパディング調整
+- [DONE] 全機能を通した結合テスト
+- [DONE] 回帰テスト（Ver1機能への影響確認）
+
+[IN PROGRESS] 6. ドキュメント・リリース
+- [DONE] READMEの更新（v2機能の使い方、詳細仕様）
+- [TODO] Vercelへデプロイし、v2.0.0のタグを付与

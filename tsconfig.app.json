@@ -21,13 +21,13 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
-  },
-  "include": ["src"],
-  "compilerOptions": {
+    "noUncheckedSideEffectImports": true,
+
+    // 2回目のcompilerOptionsの内容を統合
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
-  }
+  },
+  "include": ["src"]
 }

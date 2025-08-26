@@ -4,6 +4,7 @@ import { parseGregorian } from '@/lib/date/parseGregorian';
 import { isFutureDate } from '@/lib/date/validate';
 import { calculateAge } from '@/lib/date/age';
 import { formatWareki } from '@/lib/date/formatWareki';
+import { useAppContext } from '@/context/AppContext';
 
 interface BirthdateCalcResult {
   gregorianBirthdate: Date | null;
@@ -12,39 +13,40 @@ interface BirthdateCalcResult {
   error: string | null;
 }
 
-export const useBirthdateCalc = (birthdateString: string, referenceDateString: string) => {
+const parseDateString = (dateString: string): Date | null => {
+  if (!dateString) return null;
+  let parsedDate = parseGregorian(dateString);
+  if (!parsedDate) {
+    parsedDate = parseWareki(dateString);
+  }
+  return parsedDate;
+};
+
+export const useBirthdateCalc = (): BirthdateCalcResult => {
+  const { birthDateString, referenceDateString } = useAppContext();
+
   const result = useMemo<BirthdateCalcResult>(() => {
+    if (!birthDateString) {
+      return { gregorianBirthdate: null, warekiBirthdate: null, age: null, error: null };
+    }
+
     let error: string | null = null;
     let gregorianBirthdate: Date | null = null;
     let warekiBirthdate: string | null = null;
     let age: number | null = null;
 
-    // Try parsing as Gregorian first
-    let parsedBirthdate = parseGregorian(birthdateString);
-
-    // If not Gregorian, try parsing as Wareki
-    if (!parsedBirthdate) {
-      parsedBirthdate = parseWareki(birthdateString);
-    }
+    const parsedBirthdate = parseDateString(birthDateString);
 
     if (!parsedBirthdate) {
-      error = '日付が正しくありません。形式を確認してください。'; // Invalid date format
+      error = '生年月日が正しくありません。形式を確認してください。';
     } else if (isFutureDate(parsedBirthdate)) {
-      error = '未来の日付は指定できません。'; // Future date
+      error = '生年月日に未来の日付は指定できません。';
     } else {
       gregorianBirthdate = parsedBirthdate;
       warekiBirthdate = formatWareki(parsedBirthdate);
 
-      // Parse reference date
-      let parsedReferenceDate: Date | null = null;
-      if (referenceDateString) {
-        parsedReferenceDate = parseGregorian(referenceDateString);
-        if (!parsedReferenceDate) {
-          parsedReferenceDate = parseWareki(referenceDateString);
-        }
-      }
+      const parsedReferenceDate = parseDateString(referenceDateString);
 
-      // If reference date is invalid or future, use today's date
       const finalReferenceDate = (parsedReferenceDate && !isFutureDate(parsedReferenceDate)) 
                                  ? parsedReferenceDate 
                                  : new Date();
@@ -58,7 +60,7 @@ export const useBirthdateCalc = (birthdateString: string, referenceDateString: s
       age,
       error,
     };
-  }, [birthdateString, referenceDateString]);
+  }, [birthDateString, referenceDateString]);
 
   return result;
 };
